@@ -1,6 +1,14 @@
 #!/bin/bash
 source "$HOME/.config/git-aware.sh"
 
+export EDITOR="nvim"
+export READER="zathura"
+export FILE="lf"
+export BIB="$HOME/Documents/LaTeX/uni.bib"
+export REFER="$HOME/Documents/referbib"
+
+set editing-mode vi
+
 stty -ixon # Disable ctrl-s and ctrl-q.
 shopt -s autocd #Allows you to cd into directory merely by typing the directory name.
 HISTSIZE= HISTFILESIZE= # Infinite history.

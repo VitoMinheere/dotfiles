@@ -1,0 +1,106 @@
+#!/bin/sh
+
+alias ka="killall" \
+	mkd="mkdir -pv" \
+	p="sudo pacman" \
+	SS="sudo systemctl" \
+	f="$FILE" \
+	g="git" \
+	n="$EDITOR" \
+	x="sxiv -ft *" \
+	sdn="sudo shutdown -h now" \
+	ls="ls -hN --color=auto --group-directories-first" \
+	grep="grep --color=auto" \
+	diff="diff --color=auto" \
+	ccat="highlight --out-format=ansi" \
+	yt="youtube-dl --add-metadata -i -o '%(title)s.%(ext)s'" \
+	yta="yt -x -f bestaudio/best" \
+	ref="shortcuts >/dev/null; source ~/.config/shortcutrc" \
+	upc="sudo pacman -Syu; pkill -RTMIN+8 i3blocks" \
+	lsp="pacman -Qett --color=always | less" \
+	ffmpeg="ffmpeg -hide_banner" \
+	dev="list_projects" \
+	ll="ls -al" \
+	lsd='ls -l | grep "^d"' \
+	ping='ping -c 5' \
+    	t='task' \
+    	tw='timew' \
+    	blc='bluetoothctl' \
+
+# GIT aliases
+alias \
+    gs="git status" \
+    gp='git pull' \
+    cg='cd `git rev-parse --show-toplevel`' \
+    ga="git add" \
+    gc="git commit -m" \
+    gb="list_branches" \
+    gpu="git push" \
+    gsync="git pull origin develop" \
+    gl='git log --graph --pretty=format:"%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset" --abbrev-commit' \
+
+# Python aliases
+alias \
+    pir="pip install -r requirements.txt" \
+    venv="python -m venv venv && src" \
+    src="source venv/bin/activate" \
+
+
+# Download all posts from a WP blog
+dwblog() {
+	wget --recursive --mirror --no-clobber \
+        --exclude-directories=category,author,comments,feed,tag,feed,wp-content,wp-json,newsletter \
+        --html-extension --convert-links --domains "$1" --no-parent "$1"
+}
+
+vf() { fzf | xargs -r -I % $EDITOR % ;}
+zf() { fzf | xargs -r -I % $READER % ;}
+
+# shortcuts
+alias \
+    h="cd ~/ && ls -a" \
+    d="cd ~/Documents && ls -a" \
+    D="cd ~/Downloads && ls -a" \
+    m="cd ~/Music && ls -a" \
+    pp="cd ~/Pictures && ls -a" \
+    vv="cd ~/Videos && ls -a" \
+    cf="cd ~/.config && ls -a" \
+    sc="cd ~/.local/bin && ls -a" \
+    mn="cd /mnt && ls -a" \
+    cfb="$EDITOR ~/.bashrc" \
+    cfa="$EDITOR ~/.config/aliasrc" \
+    cfz="$EDITOR ~/.config/zathura/zathurarc" \
+    cfv="$EDITOR ~/.config/nvim/init.vim" \
+    cft="$EDITOR ~/.config/tmux/tmux.conf" \
+    cftw="$EDITOR ~/.config/timewarrior/.taskrc" \
+    eb="$EDITOR ~/Documents/LaTeX/uni.bib" \
+    cv="$EDITOR ~/Documents/LaTeX/cv.tex" \
+    cfk="$EDITOR ~/.config/sxhkd/sxhkdrc" \
+
+list_projects() {
+	dirs=(~/Developer/*)
+
+	read -p "$(f=0
+		for dirname in "${dirs[@]}"; do
+			echo $((++f)): "$(basename "$dirname")"
+		    done
+		echo -ne 'Please select a directory > '
+		)" selection
+
+	selected_dir="${dirs[$((selection-1))]}"
+	cd $selected_dir && ls -al
+}
+
+list_branches() {
+	branches=()
+	eval "$(git for-each-ref --shell --format='branches+=(%(refname:short))' refs/heads/)"
+	read -p "$(f=0
+		for branchname in "${branches[@]}"; do
+			echo $((++f)): "$branchname"
+		    done
+		echo -ne 'Please select a branch to checkout > '
+		)" selection
+
+	selected_branch="${branches[$((selection-1))]}"
+	git checkout $selected_branch
+}
