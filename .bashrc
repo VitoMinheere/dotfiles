@@ -36,4 +36,4 @@ fi
 if [[ ! "$SSH_AUTH_SOCK" ]]; then
         eval "$(<~/.ssh-agent-thing)"
 fi
-alias config='/usr/bin/git --git-dir=/home/bosshogg/.cfg/ --work-tree=/home/bosshogg'
+alias config='/usr/bin/git --git-dir=/home/$USER/.cfg/ --work-tree=/home/$USER'
