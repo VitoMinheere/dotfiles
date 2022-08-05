@@ -81,6 +81,7 @@ Plug 'arcticicestudio/nord-vim'
 Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
 Plug 'plytophogy/vim-virtualenv'
 Plug 'heavenshell/vim-pydocstring', { 'do': 'make install' }
+Plug 'dense-analysis/ale'
 
 " Look and feel
 Plug 'tpope/vim-commentary'
@@ -88,6 +89,7 @@ Plug 'tpope/vim-surround'
 Plug 'bling/vim-airline'
 
 call plug#end()
+
 
 " Toggle NERDtreeview
 nnoremap <silent> <Space> :NERDTreeToggle <CR>
@@ -126,6 +128,12 @@ set completeopt=menuone,noinsert,noselect
 " Avoid showing extra messages when using completion
 set shortmess+=c
 
+"Python
+let b:ale_linters = {'python': ['flake8']}
+let b:ale_fixers = {'python': ['black', 'isort']}
+
+
+" Rust
 " Configure LSP through rust-tools.nvim plugin.
 " rust-tools will configure and enable certain LSP features for us.
 " See https://github.com/simrat39/rust-tools.nvim#configuration
