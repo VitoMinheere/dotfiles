@@ -1,4 +1,4 @@
-let mapleader=","
+clet mapleader=","
 
 if ! filereadable(system('echo -n "${XDG_CONFIG_HOME:-$HOME/.config}/nvim/autoload/plug.vim"'))
     echo "Downloading junegunn/vim-plug to manage plugins..."
@@ -80,7 +80,7 @@ Plug 'arcticicestudio/nord-vim'
 " Programming
 Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
 Plug 'plytophogy/vim-virtualenv'
-Plug 'heavenshell/vim-pydocstring', { 'do': 'make install' }
+Plug 'pixelneo/vim-python-docstring'
 Plug 'dense-analysis/ale'
 
 " Look and feel
