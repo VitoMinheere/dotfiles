@@ -7,6 +7,7 @@ install_packages() {
     sudo add-apt-repository ppa:neovim-ppa/stable
 
     sudo apt install -y ssh git curl neovim tmux docker.io lua5.1 gnome-tweaks
+    sudo apt install -y python3-pip python3-venv python3-tk
 }
 
 install_dotfiles() {

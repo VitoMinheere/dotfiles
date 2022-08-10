@@ -129,7 +129,7 @@ set completeopt=menuone,noinsert,noselect
 set shortmess+=c
 
 "Python
-let b:ale_linters = {'python': ['flake8']}
+let b:ale_linters = {'python': ['flake8', 'mypy']}
 let b:ale_fixers = {'python': ['black', 'isort']}
 
 
