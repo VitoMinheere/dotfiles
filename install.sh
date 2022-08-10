@@ -15,7 +15,7 @@ install_dotfiles() {
     then
         git clone --bare https://github.com/VitoMinheere/dotfiles.git $HOME/.dotfiles
         alias config='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
-        config status.showUntrackedFiles no
+        config config status.showUntrackedFiles no
         config checkout
         config remote set-url origin git@github.com:VitoMinheere/dotfiles.git
     else
