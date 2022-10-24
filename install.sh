@@ -36,21 +36,12 @@ install_chrome() {
     sudo apt install ./google-chrome-stable_current_amd64.deb
 }
 
-install_teams() {
-    sudo sh -c 'echo "deb [arch=amd64] https://packages.microsoft.com/repos/ms-teams stable main" > /etc/apt/sources.list.d/teams.list'
-    sudo apt update
-    sudo apt install teams
-}
-
 install_snaps() {
     sudo snap install --classic code
-    sudo snap install --classic slack
-    # sudo snap install zoom-client
 }
 
 install_packages
 install_dotfiles
 adduseranddir
 install_chrome
-# install_teams
 install_snaps
