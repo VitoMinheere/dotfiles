@@ -1,7 +1,7 @@
 # dotfiles
 My Linux dotfiles
 
-Read the overview on the [https://github.com/VitoMinheere/dotfiles/wiki](Wiki)
+Read the overview on the [Wiki](https://github.com/VitoMinheere/dotfiles/wiki)
 
 # steps to roll out the dotfiles
 - Setup ssh key to be able to also push changes
@@ -9,4 +9,4 @@ Read the overview on the [https://github.com/VitoMinheere/dotfiles/wiki](Wiki)
 - Add the alias `alias config='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'`
 - `config checkout`
 
-[https://www.atlassian.com/git/tutorials/dotfiles](Tutorial)
+[Tutorial](https://www.atlassian.com/git/tutorials/dotfiles)
