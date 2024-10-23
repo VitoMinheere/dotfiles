@@ -1,7 +1,7 @@
 # dotfiles
 My Linux dotfiles
 
-Read the overview on the [https://github.com/VitoMinheere/dotfiles/wiki](Wiki).
+Read the overview on the [https://github.com/VitoMinheere/dotfiles/wiki](Wiki)
 
 # steps to roll out the dotfiles
 - Setup ssh key to be able to also push changes
