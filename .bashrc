@@ -1,4 +1,7 @@
 #!/bin/bash
+eval "$(zoxide init bash)"
+export PATH=$PATH:/usr/local/go/bin:~/go/bin:
+
 source "$HOME/.config/git-aware.sh"
 
 export EDITOR="nvim"
@@ -25,7 +28,7 @@ export PS1="${BOLD}${RED}[${WHITE}\t ${BOLD}${BLUE}\W${RED}]${GREEN}\$git_branch
 
 # Save current working dir
 touch $HOME/.cwd
-PROMPT_COMMAND='pwd > "${HOME}/.cwd" && find_git_branch; history -a'
+PROMPT_COMMAND="pwd > "${HOME}/.cwd" && find_git_branch; history -a"
 # Change to saved working dir on load
 [[ -f "${HOME}/.cwd" ]] && cd "$(< ${HOME}/.cwd)"
 
